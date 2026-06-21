@@ -152,7 +152,6 @@
             list-style: none;
         }
 
-        /* استایل دکمه‌ای شدن تست‌ها */
         .test-item {
             font-size: 11px;
             color: #334e68;
@@ -165,47 +164,48 @@
             font-weight: 500;
             transition: all 0.2s;
             display: block;
-            text-decoration: none;
+            user-select: none;
         }
 
-        .test-item:hover {
+        /* استایل حالت انتخاب شده */
+        .test-item.selected {
             background: #eef5fa;
-            border-color: var(--secondary-color);
-            transform: scale(1.02);
-        }
-
-        .phone-group {
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 12px;
-            margin-bottom: 15px;
-            background: #fafbfc;
-        }
-
-        .phone-group legend {
-            font-size: 11px;
+            border: 2px solid var(--secondary-color);
+            color: var(--primary-color);
             font-weight: bold;
-            color: var(--text-muted);
-            padding: 0 8px;
         }
 
-        .btn {
+        /* دکمه ثابت تأیید و ارسال نهایی */
+        .submit-container {
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: 10px 0;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btn-submit {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 12px;
-            margin: 8px 0;
-            text-decoration: none;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--whatsapp-color) 0%, #1ca34d 100%);
             color: white;
-            border-radius: 10px;
+            border: none;
+            border-radius: 12px;
             font-weight: bold;
-            font-size: 13px;
-            transition: all 0.2s;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(32, 186, 90, 0.3);
+            transition: 0.2s;
         }
 
-        .btn-phone { background: linear-gradient(135deg, var(--primary-color) 0%, #136a8a 100%); }
-        .btn-whatsapp { background: linear-gradient(135deg, var(--whatsapp-color) 0%, #1ca34d 100%); }
-        .btn-email { background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+        }
 
         .lab-footer {
             text-align: center;
@@ -242,25 +242,24 @@
             کابل، ناحیه نهم، قریه خواجه رواش، مایار طبی لابراتوار
         </div>
 
-        <p style="font-size: 11px; color: #d9383a; text-align: center; font-weight: bold; margin-bottom: 10px;" id="txt-hint">👇 برای سفارش یا استعلام هر آزمایش، روی آن کلیک کنید تا مستقیماً در واتساپ ارسال شود.</p>
+        <p style="font-size: 11px; color: #0b4f6c; text-align: center; font-weight: bold; margin-bottom: 15px;" id="txt-hint">👇 معاینات مورد نظر خود را انتخاب کنید (روی آن‌ها کلیک کنید)، سپس دکمه سبز رنگ پایین را جهت تأیید و ارسال فشار دهید.</p>
 
-        <!-- لیست آزمایشات متصل به واتساپ هوشمند -->
         <h2 class="section-title" id="txt-menu-title">📋 منوی تخصصی معاینات و آزمایش‌ها:</h2>
         
         <!-- کیمیای خون -->
         <div class="test-category">
             <span class="cat-title" id="cat-chemistry">Blood Chemistry (کیمیای خون)</span>
             <div class="tests-grid">
-                <span class="test-item" onclick="sendTest('FBS / R.B.S')">FBS / R.B.S</span>
-                <span class="test-item" onclick="sendTest('Cholesterol')">Cholesterol</span>
-                <span class="test-item" onclick="sendTest('Triglyceride')">Triglyceride</span>
-                <span class="test-item" onclick="sendTest('HDL / LDL')">HDL / LDL</span>
-                <span class="test-item" onclick="sendTest('BUN / Urea')">BUN / Urea</span>
-                <span class="test-item" onclick="sendTest('Creatinine')">Creatinine</span>
-                <span class="test-item" onclick="sendTest('Bilirubin (T/D)')">Bilirubin (T/D)</span>
-                <span class="test-item" onclick="sendTest('SGPT / SGOT')">SGPT / SGOT</span>
-                <span class="test-item" onclick="sendTest('Alkphos')">Alkphos</span>
-                <span class="test-item" onclick="sendTest('Uric Acid / Calcium')">Uric Acid / Calcium</span>
+                <span class="test-item" onclick="toggleTest(this, 'FBS / R.B.S')">FBS / R.B.S</span>
+                <span class="test-item" onclick="toggleTest(this, 'Cholesterol')">Cholesterol</span>
+                <span class="test-item" onclick="toggleTest(this, 'Triglyceride')">Triglyceride</span>
+                <span class="test-item" onclick="toggleTest(this, 'HDL / LDL')">HDL / LDL</span>
+                <span class="test-item" onclick="toggleTest(this, 'BUN / Urea')">BUN / Urea</span>
+                <span class="test-item" onclick="toggleTest(this, 'Creatinine')">Creatinine</span>
+                <span class="test-item" onclick="toggleTest(this, 'Bilirubin (T/D)')">Bilirubin (T/D)</span>
+                <span class="test-item" onclick="toggleTest(this, 'SGPT / SGOT')">SGPT / SGOT</span>
+                <span class="test-item" onclick="toggleTest(this, 'Alkphos')">Alkphos</span>
+                <span class="test-item" onclick="toggleTest(this, 'Uric Acid / Calcium')">Uric Acid / Calcium</span>
             </div>
         </div>
 
@@ -268,16 +267,16 @@
         <div class="test-category">
             <span class="cat-title" id="cat-hematology">Hematology (خون‌شناسی)</span>
             <div class="tests-grid">
-                <span class="test-item" onclick="sendTest('TLC / RBC')">TLC / RBC</span>
-                <span class="test-item" onclick="sendTest('Platelet / HCT')">Platelet / HCT</span>
-                <span class="test-item" onclick="sendTest('HB / ESR')">HB / ESR</span>
-                <span class="test-item" onclick="sendTest('Lymphocytes')">Lymphocytes</span>
-                <span class="test-item" onclick="sendTest('Neutrophils')">Neutrophils</span>
-                <span class="test-item" onclick="sendTest('Monocytes')">Monocytes</span>
-                <span class="test-item" onclick="sendTest('Eosinophil')">Eosinophil</span>
-                <span class="test-item" onclick="sendTest('Basophils')">Basophils</span>
-                <span class="test-item" onclick="sendTest('Malaria (MP)')">Malaria (MP)</span>
-                <span class="test-item" onclick="sendTest('Leishmania')">Leishmania</span>
+                <span class="test-item" onclick="toggleTest(this, 'TLC / RBC')">TLC / RBC</span>
+                <span class="test-item" onclick="toggleTest(this, 'Platelet / HCT')">Platelet / HCT</span>
+                <span class="test-item" onclick="toggleTest(this, 'HB / ESR')">HB / ESR</span>
+                <span class="test-item" onclick="toggleTest(this, 'Lymphocytes')">Lymphocytes</span>
+                <span class="test-item" onclick="toggleTest(this, 'Neutrophils')">Neutrophils</span>
+                <span class="test-item" onclick="toggleTest(this, 'Monocytes')">Monocytes</span>
+                <span class="test-item" onclick="toggleTest(this, 'Eosinophil')">Eosinophil</span>
+                <span class="test-item" onclick="toggleTest(this, 'Basophils')">Basophils</span>
+                <span class="test-item" onclick="toggleTest(this, 'Malaria (MP)')">Malaria (MP)</span>
+                <span class="test-item" onclick="toggleTest(this, 'Leishmania')">Leishmania</span>
             </div>
         </div>
 
@@ -285,5 +284,5 @@
         <div class="test-category">
             <span class="cat-title" id="cat-urine">Urine & Stool (ادرار و مدفوع)</span>
             <div class="tests-grid">
-                <span class="test-item" onclick="sendTest('Urine Chemical')">Urine Chemical</span>
+                <span class="test-item" onclick="toggleTest(this, 'Urine Chemical')">Urine Chemical</span>
                 
