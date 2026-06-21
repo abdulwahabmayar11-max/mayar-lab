@@ -39,7 +39,7 @@
             border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
-        /* بخش انتخاب زبان */
+        /* انتخاب زبان */
         .lang-switcher {
             display: flex;
             justify-content: center;
@@ -84,6 +84,17 @@
             margin: 5px 0;
         }
 
+        .doctor-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #d9383a;
+            margin: 2px 0 10px 0;
+            background: #fff0f0;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+        }
+
         .subtitle {
             font-size: 13px;
             color: var(--text-muted);
@@ -100,14 +111,9 @@
             line-height: 1.6;
         }
 
-        /* راست به چپ و چپ به راست خودکار بر اساس زبان */
         .ltr-dir {
             direction: ltr !important;
             text-align: left !important;
-        }
-        .html-ltr .address-box {
-            border-right: none;
-            border-left: 4px solid var(--secondary-color);
         }
 
         .section-title {
@@ -119,7 +125,6 @@
             font-weight: bold;
         }
 
-        /* دسته‌بندی منوی آزمایش‌ها */
         .test-category {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -186,10 +191,6 @@
             transition: all 0.2s;
         }
 
-        .btn:hover {
-            transform: translateY(-1px);
-        }
-
         .btn-phone { background: linear-gradient(135deg, var(--primary-color) 0%, #136a8a 100%); }
         .btn-whatsapp { background: linear-gradient(135deg, var(--whatsapp-color) 0%, #1ca34d 100%); }
         .btn-email { background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); }
@@ -210,15 +211,16 @@
         
         <!-- سوئیچر زبان -->
         <div class="lang-switcher">
-            <button class="lang-btn active" onclick="switchLang('dari')">دری</button>
-            <button class="lang-btn" onclick="switchLang('pashto')">پښتو</button>
-            <button class="lang-btn" onclick="switchLang('english')">English</button>
+            <button id="btn-dari" class="lang-btn active" onclick="switchLang('dari')">دری</button>
+            <button id="btn-pashto" class="lang-btn" onclick="switchLang('pashto')">پښتو</button>
+            <button id="btn-english" class="lang-btn" onclick="switchLang('english')">English</button>
         </div>
 
         <!-- هدر -->
         <header class="lab-header">
             <div class="animated-icon">🔬</div>
             <h1 id="txt-title">مایار طبی لابراتوار</h1>
+            <div class="doctor-name" id="txt-doctor">تکنالوژیست داکتر عبدالبصیر وردگ مایار</div>
             <p class="subtitle">Mayar Medical Laboratory</p>
         </header>
 
@@ -228,20 +230,22 @@
             کابل، ناحیه نهم، قریه خواجه رواش، مایار طبی لابراتوار
         </div>
 
-        <!-- بخش لیست کل آزمایشات استخراج شده از عکس برگه -->
+        <!-- لیست آزمایشات -->
         <h2 class="section-title" id="txt-menu-title">📋 منوی تخصصی معاینات و آزمایش‌ها:</h2>
         
         <!-- کیمیای خون -->
         <div class="test-category">
             <span class="cat-title" id="cat-chemistry">Blood Chemistry (کیمیای خون)</span>
             <ul class="tests-grid">
-                <li class="test-item">FBS / R.B.S (قند خون)</li>
-                <li class="test-item">Cholesterol / Triglyceride</li>
-                <li class="test-item">HDL / LDL (چربی خون)</li>
-                <li class="test-item">BUN / Urea / Creatinine</li>
-                <li class="test-item">Bilirubin (Total / Direct)</li>
-                <li class="test-item">SGPT (ALT) / SGOT (AST)</li>
-                <li class="test-item">Alkaline Phosphatase</li>
+                <li class="test-item">FBS / R.B.S</li>
+                <li class="test-item">Cholesterol</li>
+                <li class="test-item">Triglyceride</li>
+                <li class="test-item">HDL / LDL</li>
+                <li class="test-item">BUN / Urea</li>
+                <li class="test-item">Creatinine</li>
+                <li class="test-item">Bilirubin (T/D)</li>
+                <li class="test-item">SGPT / SGOT</li>
+                <li class="test-item">Alkphos</li>
                 <li class="test-item">Uric Acid / Calcium</li>
             </ul>
         </div>
@@ -250,12 +254,16 @@
         <div class="test-category">
             <span class="cat-title" id="cat-hematology">Hematology (خون‌شناسی)</span>
             <ul class="tests-grid">
-                <li class="test-item">TLC / RBC / Platelet</li>
-                <li class="test-item">HCT / HB / ESR</li>
-                <li class="test-item">Lymphocytes / Monocytes</li>
-                <li class="test-item">Neutrophils / Eosinophil</li>
-                <li class="test-item">Basophils / Reticulocytes</li>
-                <li class="test-item">Malaria (MP) / Leishmania</li>
+                <li class="test-item">TLC / RBC</li>
+                <li class="test-item">Platelet / HCT</li>
+                <li class="test-item">HB / ESR</li>
+                <li class="test-item">Lymphocytes</li>
+                <li class="test-item">Neutrophils</li>
+                <li class="test-item">Monocytes</li>
+                <li class="test-item">Eosinophil</li>
+                <li class="test-item">Basophils</li>
+                <li class="test-item">Malaria (MP)</li>
+                <li class="test-item">Leishmania</li>
             </ul>
         </div>
 
@@ -263,10 +271,11 @@
         <div class="test-category">
             <span class="cat-title" id="cat-urine">Urine & Stool (ادرار و مدفوع)</span>
             <ul class="tests-grid">
-                <li class="test-item">Urine Chemical (PH/Sugar)</li>
-                <li class="test-item">Urine Microscopic (WBC/RBC)</li>
-                <li class="test-item">Stool Color & Parasites</li>
-                <li class="test-item">H. Pylori (Stool Test)</li>
+                <li class="test-item">Urine Chemical</li>
+                <li class="test-item">Urine Microscopic</li>
+                <li class="test-item">Stool Examination</li>
+                <li class="test-item">H. Pylori Test</li>
+                <li class="test-item">Occult Blood</li>
             </ul>
         </div>
 
@@ -274,9 +283,11 @@
         <div class="test-category">
             <span class="cat-title" id="cat-semen">Semen Analysis (تجزیه اسپرم)</span>
             <ul class="tests-grid">
-                <li class="test-item">Volume / PH / Liquefaction</li>
-                <li class="test-item">Sperm Count / Sperm Motility</li>
-                <li class="test-item">Morphology (Normal/Abnormal)</li>
+                <li class="test-item">Volume / PH</li>
+                <li class="test-item">Sperm Count</li>
+                <li class="test-item">Motility Form</li>
+                <li class="test-item">Morphology</li>
+                <li class="test-item">Pus Cells</li>
             </ul>
         </div>
 
@@ -287,18 +298,11 @@
                 <li class="test-item">Widal Test / TyphoidDot</li>
                 <li class="test-item">Brucellosis (Abortus/Melitensis)</li>
                 <li class="test-item">Toxoplasmosis (IgG/IgM)</li>
-                <li class="test-item">Rheumatoid Factor / C.R.P / ASO</li>
-                <li class="test-item">HBs Ag / HCV Ab / HIV / Blood Group</li>
-                <li class="test-item">TORCH Test (Toxo, Rubella, CMV)</li>
+                <li class="test-item">Rheumatoid Factor / C.R.P</li>
+                <li class="test-item">ASO Titer / Blood Group</li>
+                <li class="test-item">HBs Ag / HCV Ab / HIV</li>
+                <li class="test-item">TORCH (Toxo, Rubella, CMV)</li>
             </ul>
         </div>
 
-        <!-- ارتباط با ما -->
-        <main class="action-area">
-            <h2 class="section-title" id="txt-contact-title">📱 ارتباط و نوبت‌دهی آنلاین</h2>
-
-            <!-- اپراتور اول -->
-            <fieldset class="phone-group">
-                <legend id="leg-op1">ارتباط مستقیم</legend>
-                <a href="tel:0780873442" class="btn btn-phone">📞 ۰۷۸۰۸۷۳۴۴۲</a>
-                
+        
