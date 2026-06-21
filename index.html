@@ -167,7 +167,6 @@
             user-select: none;
         }
 
-        /* استایل حالت انتخاب شده */
         .test-item.selected {
             background: #eef5fa;
             border: 2px solid var(--secondary-color);
@@ -175,7 +174,6 @@
             font-weight: bold;
         }
 
-        /* دکمه ثابت تأیید و ارسال نهایی */
         .submit-container {
             position: sticky;
             bottom: 0;
@@ -223,15 +221,15 @@
         
         <!-- سوئیچر زبان -->
         <div class="lang-switcher">
-            <button id="btn-dari" class="lang-btn active" onclick="switchLang('dari')">دری</button>
-            <button id="btn-pashto" class="lang-btn" onclick="switchLang('pashto')">پښتو</button>
-            <button id="btn-english" class="lang-btn" onclick="switchLang('english')">English</button>
+            <button id="btn-dari" class="lang-btn active">دری</button>
+            <button id="btn-pashto" class="lang-btn">پښتو</button>
+            <button id="btn-english" class="lang-btn">English</button>
         </div>
 
         <!-- هدر -->
         <header class="lab-header">
             <div class="animated-icon">🔬</div>
-            <h1 id="txt-title">مایار طبی لابراتوار</h1>
+            <h1 id="txt-title">مایار طبی لابرآتوار</h1>
             <div class="doctor-name" id="txt-doctor">تکنالوژیست داکتر عبدالبصیر وردگ مایار</div>
             <p class="subtitle">Mayar Medical Laboratory</p>
         </header>
@@ -250,16 +248,16 @@
         <div class="test-category">
             <span class="cat-title" id="cat-chemistry">Blood Chemistry (کیمیای خون)</span>
             <div class="tests-grid">
-                <span class="test-item" onclick="toggleTest(this, 'FBS / R.B.S')">FBS / R.B.S</span>
-                <span class="test-item" onclick="toggleTest(this, 'Cholesterol')">Cholesterol</span>
-                <span class="test-item" onclick="toggleTest(this, 'Triglyceride')">Triglyceride</span>
-                <span class="test-item" onclick="toggleTest(this, 'HDL / LDL')">HDL / LDL</span>
-                <span class="test-item" onclick="toggleTest(this, 'BUN / Urea')">BUN / Urea</span>
-                <span class="test-item" onclick="toggleTest(this, 'Creatinine')">Creatinine</span>
-                <span class="test-item" onclick="toggleTest(this, 'Bilirubin (T/D)')">Bilirubin (T/D)</span>
-                <span class="test-item" onclick="toggleTest(this, 'SGPT / SGOT')">SGPT / SGOT</span>
-                <span class="test-item" onclick="toggleTest(this, 'Alkphos')">Alkphos</span>
-                <span class="test-item" onclick="toggleTest(this, 'Uric Acid / Calcium')">Uric Acid / Calcium</span>
+                <span class="test-item" data-test="FBS / R.B.S">FBS / R.B.S</span>
+                <span class="test-item" data-test="Cholesterol">Cholesterol</span>
+                <span class="test-item" data-test="Triglyceride">Triglyceride</span>
+                <span class="test-item" data-test="HDL / LDL">HDL / LDL</span>
+                <span class="test-item" data-test="BUN / Urea">BUN / Urea</span>
+                <span class="test-item" data-test="Creatinine">Creatinine</span>
+                <span class="test-item" data-test="Bilirubin (T/D)">Bilirubin (T/D)</span>
+                <span class="test-item" data-test="SGPT / SGOT">SGPT / SGOT</span>
+                <span class="test-item" data-test="Alkphos">Alkphos</span>
+                <span class="test-item" data-test="Uric Acid / Calcium">Uric Acid / Calcium</span>
             </div>
         </div>
 
@@ -267,16 +265,16 @@
         <div class="test-category">
             <span class="cat-title" id="cat-hematology">Hematology (خون‌شناسی)</span>
             <div class="tests-grid">
-                <span class="test-item" onclick="toggleTest(this, 'TLC / RBC')">TLC / RBC</span>
-                <span class="test-item" onclick="toggleTest(this, 'Platelet / HCT')">Platelet / HCT</span>
-                <span class="test-item" onclick="toggleTest(this, 'HB / ESR')">HB / ESR</span>
-                <span class="test-item" onclick="toggleTest(this, 'Lymphocytes')">Lymphocytes</span>
-                <span class="test-item" onclick="toggleTest(this, 'Neutrophils')">Neutrophils</span>
-                <span class="test-item" onclick="toggleTest(this, 'Monocytes')">Monocytes</span>
-                <span class="test-item" onclick="toggleTest(this, 'Eosinophil')">Eosinophil</span>
-                <span class="test-item" onclick="toggleTest(this, 'Basophils')">Basophils</span>
-                <span class="test-item" onclick="toggleTest(this, 'Malaria (MP)')">Malaria (MP)</span>
-                <span class="test-item" onclick="toggleTest(this, 'Leishmania')">Leishmania</span>
+                <span class="test-item" data-test="TLC / RBC">TLC / RBC</span>
+                <span class="test-item" data-test="Platelet / HCT">Platelet / HCT</span>
+                <span class="test-item" data-test="HB / ESR">HB / ESR</span>
+                <span class="test-item" data-test="Lymphocytes">Lymphocytes</span>
+                <span class="test-item" data-test="Neutrophils">Neutrophils</span>
+                <span class="test-item" data-test="Monocytes">Monocytes</span>
+                <span class="test-item" data-test="Eosinophil">Eosinophil</span>
+                <span class="test-item" data-test="Basophils">Basophils</span>
+                <span class="test-item" data-test="Malaria (MP)">Malaria (MP)</span>
+                <span class="test-item" data-test="Leishmania">Leishmania</span>
             </div>
         </div>
 
@@ -284,5 +282,15 @@
         <div class="test-category">
             <span class="cat-title" id="cat-urine">Urine & Stool (ادرار و مدفوع)</span>
             <div class="tests-grid">
-                <span class="test-item" onclick="toggleTest(this, 'Urine Chemical')">Urine Chemical</span>
-                
+                <span class="test-item" data-test="Urine Chemical">Urine Chemical</span>
+                <span class="test-item" data-test="Urine Microscopic">Urine Microscopic</span>
+                <span class="test-item" data-test="Stool Examination">Stool Examination</span>
+                <span class="test-item" data-test="H. Pylori Test">H. Pylori Test</span>
+                <span class="test-item" data-test="Occult Blood">Occult Blood</span>
+            </div>
+        </div>
+
+        <!-- بخش اسپرم -->
+        <div class="test-category">
+            <span class="cat-title" id="cat-semen">Semen Analysis (تجزیه اسپرم)</span>
+            
