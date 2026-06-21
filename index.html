@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لابراتوار تخصصی طبی مایار</title>
     <style>
-        /* تعریف متغیرهای رنگی برای استایل مدرن پزشکی */
         :root {
             --bg-gradient: linear-gradient(135deg, #eef2f7 0%, #d9e2ec 100%);
             --card-bg: #ffffff;
@@ -17,7 +16,6 @@
             --shadow-pro: 0 20px 40px rgba(27, 42, 74, 0.07);
         }
 
-        /* استایل‌های پایه */
         body {
             font-family: system-ui, -apple-system, sans-serif;
             background: var(--bg-gradient);
@@ -31,7 +29,6 @@
             justify-content: center;
         }
 
-        /* کانتینر اصلی کارت و وب‌سایت */
         .main-container {
             background: var(--card-bg);
             width: 100%;
@@ -43,7 +40,6 @@
             backdrop-filter: blur(10px);
         }
 
-        /* هدر سایت */
         .lab-header {
             text-align: center;
             margin-bottom: 25px;
@@ -80,7 +76,6 @@
             font-weight: bold;
         }
 
-        /* بخش ویژگی‌های آزمایشگاه */
         .features {
             display: flex;
             justify-content: space-between;
@@ -99,7 +94,53 @@
             color: var(--primary-color);
         }
 
-        /* محوطه دکمه‌ها */
+        /* بخش جدید لیست معاینات و آزمایش‌ها */
+        .section-title {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin: 25px 0 10px 0;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+
+        .tests-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 25px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .test-item {
+            background: #fafbfc;
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* بخش آدرس */
+        .address-box {
+            background: #f0f4f8;
+            border-right: 4px solid var(--secondary-color);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .address-box strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
         .action-area h2 {
             font-size: 18px;
             color: var(--primary-color);
@@ -112,7 +153,6 @@
             margin-bottom: 20px;
         }
 
-        /* گروه‌بندی شماره‌ها */
         .phone-group {
             border: 1px solid #e2e8f0;
             border-radius: 16px;
@@ -128,7 +168,6 @@
             padding: 0 10px;
         }
 
-        /* استایل عمومی دکمه‌ها همراه با انیمیشن */
         .btn {
             display: flex;
             align-items: center;
@@ -149,10 +188,6 @@
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .btn:active {
-            transform: translateY(1px);
-        }
-
         .btn-phone {
             background: linear-gradient(135deg, var(--primary-color) 0%, #136a8a 100%);
         }
@@ -166,7 +201,6 @@
             font-size: 16px;
         }
 
-        /* فوتر وب‌سایت */
         .lab-footer {
             text-align: center;
             margin-top: 25px;
@@ -182,7 +216,6 @@
             opacity: 0.7;
         }
 
-        /* انیمیشن تپش آیکون میکروسکوپ */
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.08); }
@@ -193,7 +226,7 @@
 <body>
 
     <div class="main-container">
-        <!-- بخش هدر و برندینگ -->
+        <!-- هدر و برندینگ -->
         <header class="lab-header">
             <div class="animated-icon">🔬</div>
             <h1>لابراتوار طبی مایار</h1>
@@ -201,16 +234,35 @@
             <div class="badge">پاسخ‌دهی سریع و دقیق</div>
         </header>
 
-        <!-- بخش ویژگی‌ها -->
+        <!-- ویژگی‌ها -->
         <section class="features">
             <div class="feat-item">✔️ جواب‌دهی آنلاین</div>
             <div class="feat-item">✔️ مجهز به تکنولوژی روز</div>
             <div class="feat-item">✔️ کادر مجرب</div>
         </section>
 
-        <!-- دکمه‌های ارتباطی حرفه‌ای -->
+        <!-- بخش آدرس فیزیکی -->
+        <div class="address-box">
+            <strong>📍 آدرس ما:</strong>
+            کابل، ناحیه نهم، قریه خواجه رواشه، لابراتوار طبی مایار
+        </div>
+
+        <!-- بخش لیست معاینات و آزمایش‌ها -->
+        <h2 class="section-title">🧪 لیست مهم‌ترین معاینات و آزمایش‌ها:</h2>
+        <ul class="tests-list">
+            <li class="test-item">🔹 آزمایش‌های عمومی خون</li>
+            <li class="test-item">🔹 هورمونی و تیروئید</li>
+            <li class="test-item">🔹 بیوشیمی و قند خون</li>
+            <li class="test-item">🔹 چربی و کلسترول</li>
+            <li class="test-item">🔹 میکروب‌شناسی و ادرار</li>
+            <li class="test-item">🔹 فکتورهای جگر و گرده</li>
+            <li class="test-item">🔹 ویتامین‌ها (D3, B12)</li>
+            <li class="test-item">🔹 تِست‌های اختصاصی زایمان</li>
+        </ul>
+
+        <!-- دکمه‌های ارتباطی -->
         <main class="action-area">
-            <h2>پذیرش و نوبت‌دهی آنلاین</h2>
+            <h2 class="section-title">📱 پذیرش و نوبت‌دهی آنلاین</h2>
             <p class="notice">جهت هماهنگی، ارسال نسخه یا دریافت جواب آزمایش کلیک کنید:</p>
 
             <!-- خط اول ارتباطی -->
