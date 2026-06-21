@@ -4,343 +4,323 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مایار طبی لابراتوار | Mayar Medical Laboratory</title>
-    <!-- لود کردن کتابخانه ساخت عکس از صفحات طولانی -->
+    <!-- لود کتابخانه رسمی برای اسکرین‌شات طولی باکیفیت -->
     <script src="https://cloudflare.com"></script>
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #eef2f7 0%, #d9e2ec 100%);
-            --card-bg: #ffffff;
-            --primary-color: #0b4f6c;
-            --secondary-color: #01baef;
-            --text-main: #1b2a4a;
-            --text-muted: #627d98;
-            --whatsapp-color: #20ba5a;
-            --shadow-pro: 0 20px 40px rgba(27, 42, 74, 0.07);
+            --bg-site: #fdfdfd;
+            --primary: #0a2540;
+            --accent: #0077b6;
+            --text-dark: #1c2434;
+            --text-gray: #64748b;
+            --whatsapp: #25d366;
+            --border-color: #e2e8f0;
         }
 
         body {
             font-family: system-ui, -apple-system, sans-serif;
-            background: var(--bg-gradient);
+            background-color: var(--bg-site);
+            color: var(--text-dark);
             margin: 0;
-            padding: 15px;
-            color: var(--text-main);
+            padding: 0;
             direction: rtl;
-            min-height: 100vh;
+        }
+
+        /* منوی بالایی وب‌سایت مشابه الگوی مدنظر */
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 20px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .main-container {
-            background: var(--card-bg);
-            width: 100%;
-            max-width: 480px;
-            border-radius: 24px;
-            padding: 25px 20px;
-            box-shadow: var(--shadow-pro);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-        }
-
-        .lab-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .animated-icon {
-            font-size: 50px;
-            margin-bottom: 5px;
-        }
-
-        .lab-header h1 {
-            font-size: 24px;
+        .navbar-brand {
             font-weight: 800;
-            color: var(--primary-color);
-            margin: 5px 0;
+            font-size: 18px;
+            color: var(--primary);
+            letter-spacing: 0.5px;
         }
 
-        .doctor-name {
-            font-size: 15px;
-            font-weight: bold;
-            color: #d9383a;
-            margin: 2px 0 8px 0;
-            background: #fff0f0;
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 8px;
-        }
-
-        .top-phones {
-            margin: 5px 0 12px 0;
-            font-size: 14px;
-            font-weight: bold;
-            color: #0b4f6c;
-        }
-
-        .top-phones a {
-            color: #0b4f6c;
-            text-decoration: none;
-            background: #f0f4f8;
-            padding: 3px 10px;
-            border-radius: 6px;
-            display: inline-block;
-        }
-
-        /* کادر کلی که برای عکس‌برداری به گالری فرستاده می‌شود */
-        #full-capture-area {
-            background: white;
-            padding: 5px;
-            border-radius: 12px;
-        }
-
-        .address-box {
-            background: #eef5fa;
-            border-right: 4px solid var(--secondary-color);
-            padding: 12px;
-            border-radius: 12px;
-            margin-bottom: 20px;
+        .nav-phone {
             font-size: 13px;
-            line-height: 1.6;
+            font-weight: bold;
+            color: var(--accent);
+            text-decoration: none;
+            background: #f0fdf4;
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid #bbf7d0;
         }
 
-        .patient-form {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
+        /* محوطه مرکزی مشابه چیدمان آکادمیک */
+        .wrapper {
+            max-width: 550px;
+            margin: 30px auto;
+            padding: 0 15px 100px 15px;
+        }
+
+        /* کارت شناسایی کلینیک */
+        .hero-section {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 20px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .hero-section h1 {
+            font-size: 24px;
+            color: var(--primary);
+            margin: 0 0 5px 0;
+            font-weight: 800;
+        }
+
+        .doc-title {
+            font-size: 14px;
+            color: #ef4444;
+            font-weight: bold;
+            background: #fef2f2;
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 30px;
             margin-bottom: 15px;
         }
 
-        .form-title {
-            font-size: 14px;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 12px;
-            display: block;
+        .address-text {
+            font-size: 13px;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin: 0;
         }
 
-        .form-group {
-            margin-bottom: 12px;
+        /* بخش فرم مشخصات مراجعین */
+        .card-form {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
         }
 
-        .form-group label {
+        .card-form h3 {
+            font-size: 16px;
+            color: var(--primary);
+            margin: 0 0 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .input-block {
+            margin-bottom: 15px;
+        }
+
+        .input-block label {
             display: block;
             font-size: 12px;
             font-weight: bold;
-            margin-bottom: 4px;
-            color: #4a5568;
+            margin-bottom: 5px;
+            color: var(--text-dark);
         }
 
-        .form-control {
+        .form-input {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
             font-size: 13px;
             box-sizing: border-box;
-            font-family: inherit;
+            background-color: #f8fafc;
         }
 
-        .radio-group {
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background-color: #ffffff;
+        }
+
+        .gender-box {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             padding-top: 5px;
         }
 
-        .radio-group label {
+        .gender-box label {
             font-size: 13px;
             font-weight: 500;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
         }
 
-        .section-title {
+        /* بخش طبقه‌بندی منوها */
+        .menu-title {
             font-size: 16px;
-            color: var(--primary-color);
-            margin: 25px 0 12px 0;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 5px;
-            font-weight: bold;
+            color: var(--primary);
+            margin: 30px 0 15px 0;
+            font-weight: 800;
         }
 
-        .test-category {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 12px;
+        .category-block {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .category-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #ffffff;
+            background: var(--primary);
+            padding: 5px 12px;
+            border-radius: 8px;
+            display: inline-block;
             margin-bottom: 15px;
         }
 
-        .cat-title {
-            font-size: 13px;
-            font-weight: bold;
-            color: #ffffff;
-            background: var(--primary-color);
-            padding: 4px 10px;
-            border-radius: 6px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        .tests-grid {
+        .tests-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6px;
-            padding: 0;
-            margin: 0;
-            list-style: none;
+            gap: 8px;
         }
 
-        .test-item {
+        /* ساختار دکمه‌ای مدرن برای انتخاب تست‌ها */
+        .test-node {
             font-size: 11px;
-            color: #334e68;
-            background: #ffffff;
-            padding: 8px;
-            border-radius: 6px;
-            border: 1px solid #e2e8f0;
+            color: #475569;
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
             cursor: pointer;
             text-align: center;
-            font-weight: 500;
-            transition: all 0.2s;
-            display: block;
+            font-weight: 600;
+            transition: 0.2s;
             user-select: none;
         }
 
-        .test-item.selected {
-            background: #eef5fa;
-            border: 2px solid var(--secondary-color);
-            color: var(--primary-color);
-            font-weight: bold;
+        .test-node.active {
+            background: #f0f9ff;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            font-weight: 700;
         }
 
-        /* دکمه چسبان و بزرگ تایید نهایی در پایین صفحه */
-        .submit-container {
-            position: sticky;
+        /* پنل دکمه چسبان پایانی جهت ارسال نهایی */
+        .sticky-bar {
+            position: fixed;
             bottom: 0;
-            background: white;
-            padding: 12px 0;
-            border-top: 1px solid #e2e8f0;
-            margin-top: 25px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-top: 1px solid var(--border-color);
+            padding: 12px 20px;
             text-align: center;
-            z-index: 100;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.03);
+            backdrop-filter: blur(8px);
+            z-index: 999;
         }
 
-        .btn-submit {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .submit-trigger {
+            max-width: 520px;
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--whatsapp-color) 0%, #1ca34d 100%);
-            color: white;
+            margin: 0 auto;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--whatsapp) 0%, #1ca34d 100%);
+            color: #ffffff;
             border: none;
             border-radius: 12px;
             font-weight: bold;
             font-size: 14px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(32, 186, 90, 0.4);
-            transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+            display: block;
         }
 
-        .btn-submit:hover {
-            transform: translateY(-2px);
-        }
-
-        .phone-group {
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 12px;
-            margin-bottom: 15px;
-            background: #fafbfc;
-        }
-
-        .phone-group legend {
-            font-size: 11px;
-            font-weight: bold;
-            color: var(--text-muted);
-            padding: 0 8px;
-        }
-
-        .btn-phone {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px;
-            margin: 8px 0;
-            text-decoration: none;
-            color: white;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 13px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, #136a8a 100%);
-        }
-
-        .lab-footer {
+        .footer-branding {
             text-align: center;
-            margin-top: 25px;
-            border-top: 1px solid #e2e8f0;
-            padding-top: 15px;
+            margin-top: 30px;
             font-size: 11px;
-            color: var(--text-muted);
+            color: var(--text-gray);
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
         }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
+    <!-- نوار ناوبری فوقانی منسجم بر اساس وب‌سایت نمونه -->
+    <div class="navbar">
+        <div class="navbar-brand">Mayar Lab</div>
+        <a href="tel:0780873442" class="nav-phone">📞 تماس مستقیم</a>
+    </div>
+
+    <!-- بخش اصلی کل صفحه وب که تحت پوشش اسکرین‌شات طولی قرار می‌گیرد -->
+    <div class="wrapper" id="page-capture-zone">
         
-        <!-- هدر وب‌سایت -->
-        <header class="lab-header">
-            <div class="animated-icon">🔬</div>
+        <!-- هویت و برندینگ لابراتوار -->
+        <div class="hero-section">
             <h1>مایار طبی لابراتوار</h1>
-            <div class="doctor-name">تکنالوژیست داکتر عبدالبصیر وردگ مایار</div>
-            <div class="top-phones">
-                📞 <a href="tel:0780873442">۰۷۸۰۸۷۳۴۴۲</a>
-            </div>
-            <p class="subtitle">Mayar Medical Laboratory</p>
-        </header>
+            <div class="doc-title">تکنالوژیست داکتر عبدالبصیر وردگ مایار</div>
+            <p class="address-text">📍 کابل، ناحیه نهم، قریه خواجه رواش، مایار طبی لابراتوار</p>
+        </div>
 
-        <!-- شروع محدوده عکس‌برداری کامل (فرم + معاینات انتخاب شده) -->
-        <div id="full-capture-area">
+        <!-- فرم مراجعین جهت وارد کردن اطلاعات مراجع -->
+        <div class="card-form">
+            <h3>📝 مشخصات مراجع:</h3>
             
-            <!-- اطلاعات مکان فیزیکی -->
-            <div class="address-box">
-                <strong>📍 آدرس:</strong>
-                کابل، ناحیه نهم، قریه خواجه رواش، مایار طبی لابراتوار
+            <div class="input-block">
+                <label>نام و ولد:</label>
+                <input type="text" id="m-name" class="form-input" placeholder="احمد ولد محمد">
             </div>
 
-            <!-- بخش فرم مشخصات مریض -->
-            <div class="patient-form">
-                <span class="form-title">📝 فرم مشخصات مریض:</span>
-                
-                <div class="form-group">
-                    <label>نام و ولد مریض:</label>
-                    <input type="text" id="p-name" class="form-control" placeholder="احمد ولد محمد">
-                </div>
-
-                <div class="form-group">
-                    <label>سن مریض:</label>
-                    <input type="number" id="p-age" class="form-control" placeholder="۱۹">
-                </div>
-
-                <div class="form-group">
-                    <label>شماره تماس مریض:</label>
-                    <input type="tel" id="p-phone" class="form-control" placeholder="0785468796">
-                </div>
-
-                <div class="form-group">
-                    <label>جنسیت:</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="p-gender" value="مرد" checked> مرد</label>
-                        <label><input type="radio" name="p-gender" value="زن"> زن</label>
-                    </div>
-                </div>
+            <div class="input-block">
+                <label>سن (سال):</label>
+                <input type="number" id="m-age" class="form-input" placeholder="۱۹">
             </div>
 
-            <!-- منوی انتخاب معاینات -->
-            <h2 class="section-title">📋 انتخاب معاینات و آزمایش‌ها:</h2>
+            <div class="input-block">
+                <label>شماره تماس:</label>
+                <input type="tel" id="m-phone" class="form-input" placeholder="0785468796">
+            </div>
+
+            <div class="input-block">
+                <label>جنسیت:</label>
+                <div class="gender-box">
+                    <label><input type="radio" name="m-gender" value="مرد" checked> مرد</label>
+                    <label><input type="radio" name="m-gender" value="زن"> زن</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-title">📋 انتخاب لیست معاینات و آزمایش‌ها:</div>
+
+        <!-- ۱. کیمیای خون -->
+        <div class="category-block">
+            <span class="category-name">Blood Chemistry (کیمیای خون)</span>
+            <div class="tests-layout">
+                <span class="test-node" data-val="FBS / R.B.S">FBS / R.B.S</span>
+                <span class="test-node" data-val="Cholesterol">Cholesterol</span>
+                <span class="test-node" data-val="Triglyceride">Triglyceride</span>
+                <span class="test-node" data-val="HDL / LDL">HDL / LDL</span>
+                <span class="test-node" data-val="BUN / Urea">BUN / Urea</span>
+                <span class="test-node" data-val="Creatinine">Creatinine</span>
+                <span class="test-node" data-val="Bilirubin (T/D)">Bilirubin (T/D)</span>
+                <span class="test-node" data-val="SGPT / SGOT">SGPT / SGOT</span>
+                <span class="test-node" data-val="Alkphos">Alkphos</span>
+                <span class="test-node" data-val="Uric Acid / Calcium">Uric Acid / Calcium</span>
+            </div>
+        </div>
+
+        <!-- ۲. خون شناسی -->
+        <div class="category-block">
+            <span class="category-name">Hematology (خون‌شناسی)</span>
             
-            <!-- کیمیای خون -->
-            <div class="test-category">
-                
