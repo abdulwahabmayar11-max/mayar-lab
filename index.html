@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لابراتوار تخصصی طبی مایار</title>
+    <title>مایار طبی لابراتوار | Mayar Medical Laboratory</title>
     <style>
         :root {
             --bg-gradient: linear-gradient(135deg, #eef2f7 0%, #d9e2ec 100%);
@@ -32,12 +32,39 @@
         .main-container {
             background: var(--card-bg);
             width: 100%;
-            max-width: 450px;
+            max-width: 480px;
             border-radius: 24px;
-            padding: 30px 24px;
+            padding: 25px 20px;
             box-shadow: var(--shadow-pro);
             border: 1px solid rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
+        }
+
+        /* بخش انتخاب زبان */
+        .lang-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: #f0f4f8;
+            padding: 6px;
+            border-radius: 30px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--primary-color);
+            cursor: pointer;
+            border-radius: 20px;
+            transition: 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary-color);
+            color: white;
         }
 
         .lab-header {
@@ -48,11 +75,10 @@
         .animated-icon {
             font-size: 50px;
             margin-bottom: 5px;
-            animation: pulse 2s infinite ease-in-out;
         }
 
         .lab-header h1 {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
             color: var(--primary-color);
             margin: 5px 0;
@@ -61,239 +87,218 @@
         .subtitle {
             font-size: 13px;
             color: var(--text-muted);
-            letter-spacing: 0.5px;
             margin: 0 0 15px 0;
-            text-transform: uppercase;
         }
 
-        .badge {
-            display: inline-block;
-            background: rgba(1, 186, 239, 0.1);
-            color: var(--secondary-color);
-            padding: 4px 16px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .features {
-            display: flex;
-            justify-content: space-between;
-            gap: 8px;
-            margin-bottom: 25px;
-        }
-
-        .feat-item {
-            background: #f0f4f8;
-            font-size: 11px;
-            font-weight: bold;
-            padding: 8px;
-            border-radius: 10px;
-            flex: 1;
-            text-align: center;
-            color: var(--primary-color);
-        }
-
-        /* بخش جدید لیست معاینات و آزمایش‌ها */
-        .section-title {
-            font-size: 18px;
-            color: var(--primary-color);
-            margin: 25px 0 10px 0;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 5px;
-        }
-
-        .tests-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 25px;
-            padding: 0;
-            list-style: none;
-        }
-
-        .test-item {
-            background: #fafbfc;
-            border: 1px solid #e2e8f0;
-            padding: 10px;
-            border-radius: 12px;
-            font-size: 13px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* بخش آدرس */
         .address-box {
-            background: #f0f4f8;
+            background: #eef5fa;
             border-right: 4px solid var(--secondary-color);
-            padding: 15px;
+            padding: 12px;
             border-radius: 12px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-size: 13px;
             line-height: 1.6;
         }
 
-        .address-box strong {
-            color: var(--primary-color);
-            display: block;
-            margin-bottom: 5px;
+        /* راست به چپ و چپ به راست خودکار بر اساس زبان */
+        .ltr-dir {
+            direction: ltr !important;
+            text-align: left !important;
+        }
+        .html-ltr .address-box {
+            border-right: none;
+            border-left: 4px solid var(--secondary-color);
         }
 
-        .action-area h2 {
-            font-size: 18px;
+        .section-title {
+            font-size: 16px;
             color: var(--primary-color);
-            margin-bottom: 5px;
+            margin: 25px 0 12px 0;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 5px;
+            font-weight: bold;
         }
 
-        .notice {
+        /* دسته‌بندی منوی آزمایش‌ها */
+        .test-category {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .cat-title {
             font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
+            font-weight: bold;
+            color: #ffffff;
+            background: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .tests-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .test-item {
+            font-size: 11px;
+            color: #334e68;
+            background: #ffffff;
+            padding: 6px 8px;
+            border-radius: 6px;
+            border: 1px solid #f0f4f8;
         }
 
         .phone-group {
             border: 1px solid #e2e8f0;
             border-radius: 16px;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 12px;
+            margin-bottom: 15px;
             background: #fafbfc;
         }
 
         .phone-group legend {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: bold;
             color: var(--text-muted);
-            padding: 0 10px;
+            padding: 0 8px;
         }
 
         .btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 14px;
-            margin: 10px 0;
+            padding: 12px;
+            margin: 8px 0;
             text-decoration: none;
             color: white;
-            border-radius: 12px;
+            border-radius: 10px;
             font-weight: bold;
-            font-size: 14px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            font-size: 13px;
+            transition: all 0.2s;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
         }
 
-        .btn-phone {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #136a8a 100%);
-        }
-
-        .btn-whatsapp {
-            background: linear-gradient(135deg, var(--whatsapp-color) 0%, #1ca34d 100%);
-        }
-
-        .icon {
-            margin-left: 8px;
-            font-size: 16px;
-        }
+        .btn-phone { background: linear-gradient(135deg, var(--primary-color) 0%, #136a8a 100%); }
+        .btn-whatsapp { background: linear-gradient(135deg, var(--whatsapp-color) 0%, #1ca34d 100%); }
+        .btn-email { background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); }
 
         .lab-footer {
             text-align: center;
             margin-top: 25px;
             border-top: 1px solid #e2e8f0;
             padding-top: 15px;
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .copyright {
             font-size: 11px;
-            margin-top: 5px;
-            opacity: 0.7;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
+            color: var(--text-muted);
         }
     </style>
 </head>
 <body>
 
     <div class="main-container">
-        <!-- هدر و برندینگ -->
-        <header class="lab-header">
-            <div class="animated-icon">🔬</div>
-            <h1>لابراتوار طبی مایار</h1>
-            <p class="subtitle">Mayar Medical Laboratory</p>
-            <div class="badge">پاسخ‌دهی سریع و دقیق</div>
-        </header>
-
-        <!-- ویژگی‌ها -->
-        <section class="features">
-            <div class="feat-item">✔️ جواب‌دهی آنلاین</div>
-            <div class="feat-item">✔️ مجهز به تکنولوژی روز</div>
-            <div class="feat-item">✔️ کادر مجرب</div>
-        </section>
-
-        <!-- بخش آدرس فیزیکی -->
-        <div class="address-box">
-            <strong>📍 آدرس ما:</strong>
-            کابل، ناحیه نهم، قریه خواجه رواشه، لابراتوار طبی مایار
+        
+        <!-- سوئیچر زبان -->
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="switchLang('dari')">دری</button>
+            <button class="lang-btn" onclick="switchLang('pashto')">پښتو</button>
+            <button class="lang-btn" onclick="switchLang('english')">English</button>
         </div>
 
-        <!-- بخش لیست معاینات و آزمایش‌ها -->
-        <h2 class="section-title">🧪 لیست مهم‌ترین معاینات و آزمایش‌ها:</h2>
-        <ul class="tests-list">
-            <li class="test-item">🔹 آزمایش‌های عمومی خون</li>
-            <li class="test-item">🔹 هورمونی و تیروئید</li>
-            <li class="test-item">🔹 بیوشیمی و قند خون</li>
-            <li class="test-item">🔹 چربی و کلسترول</li>
-            <li class="test-item">🔹 میکروب‌شناسی و ادرار</li>
-            <li class="test-item">🔹 فکتورهای جگر و گرده</li>
-            <li class="test-item">🔹 ویتامین‌ها (D3, B12)</li>
-            <li class="test-item">🔹 تِست‌های اختصاصی زایمان</li>
-        </ul>
+        <!-- هدر -->
+        <header class="lab-header">
+            <div class="animated-icon">🔬</div>
+            <h1 id="txt-title">مایار طبی لابراتوار</h1>
+            <p class="subtitle">Mayar Medical Laboratory</p>
+        </header>
 
-        <!-- دکمه‌های ارتباطی -->
+        <!-- بخش اطلاعات مکان -->
+        <div class="address-box" id="txt-address-box">
+            <strong>📍 آدرس:</strong>
+            کابل، ناحیه نهم، قریه خواجه رواش، مایار طبی لابراتوار
+        </div>
+
+        <!-- بخش لیست کل آزمایشات استخراج شده از عکس برگه -->
+        <h2 class="section-title" id="txt-menu-title">📋 منوی تخصصی معاینات و آزمایش‌ها:</h2>
+        
+        <!-- کیمیای خون -->
+        <div class="test-category">
+            <span class="cat-title" id="cat-chemistry">Blood Chemistry (کیمیای خون)</span>
+            <ul class="tests-grid">
+                <li class="test-item">FBS / R.B.S (قند خون)</li>
+                <li class="test-item">Cholesterol / Triglyceride</li>
+                <li class="test-item">HDL / LDL (چربی خون)</li>
+                <li class="test-item">BUN / Urea / Creatinine</li>
+                <li class="test-item">Bilirubin (Total / Direct)</li>
+                <li class="test-item">SGPT (ALT) / SGOT (AST)</li>
+                <li class="test-item">Alkaline Phosphatase</li>
+                <li class="test-item">Uric Acid / Calcium</li>
+            </ul>
+        </div>
+
+        <!-- خون شناسی -->
+        <div class="test-category">
+            <span class="cat-title" id="cat-hematology">Hematology (خون‌شناسی)</span>
+            <ul class="tests-grid">
+                <li class="test-item">TLC / RBC / Platelet</li>
+                <li class="test-item">HCT / HB / ESR</li>
+                <li class="test-item">Lymphocytes / Monocytes</li>
+                <li class="test-item">Neutrophils / Eosinophil</li>
+                <li class="test-item">Basophils / Reticulocytes</li>
+                <li class="test-item">Malaria (MP) / Leishmania</li>
+            </ul>
+        </div>
+
+        <!-- ادرار و مدفوع -->
+        <div class="test-category">
+            <span class="cat-title" id="cat-urine">Urine & Stool (ادرار و مدفوع)</span>
+            <ul class="tests-grid">
+                <li class="test-item">Urine Chemical (PH/Sugar)</li>
+                <li class="test-item">Urine Microscopic (WBC/RBC)</li>
+                <li class="test-item">Stool Color & Parasites</li>
+                <li class="test-item">H. Pylori (Stool Test)</li>
+            </ul>
+        </div>
+
+        <!-- بخش اسپرم -->
+        <div class="test-category">
+            <span class="cat-title" id="cat-semen">Semen Analysis (تجزیه اسپرم)</span>
+            <ul class="tests-grid">
+                <li class="test-item">Volume / PH / Liquefaction</li>
+                <li class="test-item">Sperm Count / Sperm Motility</li>
+                <li class="test-item">Morphology (Normal/Abnormal)</li>
+            </ul>
+        </div>
+
+        <!-- سیرولوژی -->
+        <div class="test-category">
+            <span class="cat-title" id="cat-serology">Serology (سیرولوژی)</span>
+            <ul class="tests-grid">
+                <li class="test-item">Widal Test / TyphoidDot</li>
+                <li class="test-item">Brucellosis (Abortus/Melitensis)</li>
+                <li class="test-item">Toxoplasmosis (IgG/IgM)</li>
+                <li class="test-item">Rheumatoid Factor / C.R.P / ASO</li>
+                <li class="test-item">HBs Ag / HCV Ab / HIV / Blood Group</li>
+                <li class="test-item">TORCH Test (Toxo, Rubella, CMV)</li>
+            </ul>
+        </div>
+
+        <!-- ارتباط با ما -->
         <main class="action-area">
-            <h2 class="section-title">📱 پذیرش و نوبت‌دهی آنلاین</h2>
-            <p class="notice">جهت هماهنگی، ارسال نسخه یا دریافت جواب آزمایش کلیک کنید:</p>
+            <h2 class="section-title" id="txt-contact-title">📱 ارتباط و نوبت‌دهی آنلاین</h2>
 
-            <!-- خط اول ارتباطی -->
+            <!-- اپراتور اول -->
             <fieldset class="phone-group">
-                <legend>اپراتور اول (ارتباط مستقیم)</legend>
-                <a href="tel:0780873442" class="btn btn-phone">
-                    <span class="icon">📞</span> تماس تلفنی: ۰۷۸۰۸۷۳۴۴۲
-                </a>
-                <a href="https://wa.me" target="_blank" class="btn btn-whatsapp">
-                    <span class="icon">💬</span> پیام در واتساپ
-                </a>
-            </fieldset>
-
-            <!-- خط دوم ارتباطی -->
-            <fieldset class="phone-group">
-                <legend>اپراتور دوم (پشتیبانی)</legend>
-                <a href="tel:0701145135" class="btn btn-phone">
-                    <span class="icon">📞</span> تماس تلفنی: ۰۷۰۱۱۴۵۱۳۵
-                </a>
-                <a href="https://wa.me" target="_blank" class="btn btn-whatsapp">
-                    <span class="icon">💬</span> پیام در واتساپ
-                </a>
-            </fieldset>
-        </main>
-
-        <!-- فوتر سایت -->
-        <footer class="lab-footer">
-            <p>ساعات کاری: همه روزه از ساعت ۷ صبح الی ۸ شب</p>
-            <p class="copyright">© ۲۰۲۶ لابراتوار مایار. تمامی حقوق محفوظ است.</p>
-        </footer>
-    </div>
-
-</body>
-</html>
+                <legend id="leg-op1">ارتباط مستقیم</legend>
+                <a href="tel:0780873442" class="btn btn-phone">📞 ۰۷۸۰۸۷۳۴۴۲</a>
+                
