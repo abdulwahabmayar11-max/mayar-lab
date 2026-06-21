@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مایار طبی لابراتوار | Mayar Medical Laboratory</title>
-    <!-- لود کردن کتابخانه رسمی ساخت عکس از صفحه -->
+    <!-- لود کردن کتابخانه ساخت عکس از صفحات طولانی -->
     <script src="https://cloudflare.com"></script>
     <style>
         :root {
@@ -85,6 +85,13 @@
             display: inline-block;
         }
 
+        /* کادر کلی که برای عکس‌برداری به گالری فرستاده می‌شود */
+        #full-capture-area {
+            background: white;
+            padding: 5px;
+            border-radius: 12px;
+        }
+
         .address-box {
             background: #eef5fa;
             border-right: 4px solid var(--secondary-color);
@@ -95,7 +102,6 @@
             line-height: 1.6;
         }
 
-        /* کادر فرم مشخصات مریض که تبدیل به عکس می‌شود */
         .patient-form {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -149,32 +155,6 @@
             gap: 4px;
         }
 
-        /* دکمه ارسال اختصاصی زیر فرم مراجع */
-        .form-submit-container {
-            margin-bottom: 25px;
-        }
-
-        .btn-form-direct {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #20ba5a 0%, #1ca34d 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 14px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(32, 186, 90, 0.3);
-            transition: 0.2s;
-        }
-
-        .btn-form-direct:hover {
-            transform: translateY(-2px);
-        }
-
         .section-title {
             font-size: 16px;
             color: var(--primary-color);
@@ -219,9 +199,52 @@
             padding: 8px;
             border-radius: 6px;
             border: 1px solid #e2e8f0;
+            cursor: pointer;
             text-align: center;
             font-weight: 500;
+            transition: all 0.2s;
             display: block;
+            user-select: none;
+        }
+
+        .test-item.selected {
+            background: #eef5fa;
+            border: 2px solid var(--secondary-color);
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* دکمه چسبان و بزرگ تایید نهایی در پایین صفحه */
+        .submit-container {
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: 12px 0;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 25px;
+            text-align: center;
+            z-index: 100;
+        }
+
+        .btn-submit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--whatsapp-color) 0%, #1ca34d 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(32, 186, 90, 0.4);
+            transition: 0.2s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
         }
 
         .phone-group {
@@ -239,7 +262,7 @@
             padding: 0 8px;
         }
 
-        .btn {
+        .btn-phone {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -250,10 +273,8 @@
             border-radius: 10px;
             font-weight: bold;
             font-size: 13px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #136a8a 100%);
         }
-
-        .btn-phone { background: linear-gradient(135deg, var(--primary-color) 0%, #136a8a 100%); }
-        .btn-email { background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); }
 
         .lab-footer {
             text-align: center;
@@ -274,65 +295,51 @@
             <div class="animated-icon">🔬</div>
             <h1>مایار طبی لابراتوار</h1>
             <div class="doctor-name">تکنالوژیست داکتر عبدالبصیر وردگ مایار</div>
-            
             <div class="top-phones">
                 📞 <a href="tel:0780873442">۰۷۸۰۸۷۳۴۴۲</a>
             </div>
             <p class="subtitle">Mayar Medical Laboratory</p>
         </header>
 
-        <!-- اطلاعات مکان فیزیکی -->
-        <div class="address-box">
-            <strong>📍 آدرس:</strong>
-            کابل، ناحیه نهم، قریه خواجه رواش، مایار طبی لابراتوار
-        </div>
-
-        <!-- بخش فرم مشخصات مریض (آی‌دی اختصاصی برای عکس‌برداری دارد) -->
-        <div class="patient-form" id="capture-area">
-            <span class="form-title">📝 فرم مشخصات مریض:</span>
+        <!-- شروع محدوده عکس‌برداری کامل (فرم + معاینات انتخاب شده) -->
+        <div id="full-capture-area">
             
-            <div class="form-group">
-                <label>نام و ولد مریض:</label>
-                <input type="text" id="p-name" class="form-control" placeholder="مثال: احمد ولد محمد">
+            <!-- اطلاعات مکان فیزیکی -->
+            <div class="address-box">
+                <strong>📍 آدرس:</strong>
+                کابل، ناحیه نهم، قریه خواجه رواش، مایار طبی لابراتوار
             </div>
 
-            <div class="form-group">
-                <label>سن مریض:</label>
-                <input type="number" id="p-age" class="form-control" placeholder="مثال: ۱۹">
-            </div>
+            <!-- بخش فرم مشخصات مریض -->
+            <div class="patient-form">
+                <span class="form-title">📝 فرم مشخصات مریض:</span>
+                
+                <div class="form-group">
+                    <label>نام و ولد مریض:</label>
+                    <input type="text" id="p-name" class="form-control" placeholder="احمد ولد محمد">
+                </div>
 
-            <div class="form-group">
-                <label>شماره تماس مریض:</label>
-                <input type="tel" id="p-phone" class="form-control" placeholder="مثال: 0785468796">
-            </div>
+                <div class="form-group">
+                    <label>سن مریض:</label>
+                    <input type="number" id="p-age" class="form-control" placeholder="۱۹">
+                </div>
 
-            <div class="form-group">
-                <label>جنسیت:</label>
-                <div class="radio-group">
-                    <label><input type="radio" name="p-gender" value="مرد" checked> مرد</label>
-                    <label><input type="radio" name="p-gender" value="زن"> زن</label>
+                <div class="form-group">
+                    <label>شماره تماس مریض:</label>
+                    <input type="tel" id="p-phone" class="form-control" placeholder="0785468796">
+                </div>
+
+                <div class="form-group">
+                    <label>جنسیت:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="p-gender" value="مرد" checked> مرد</label>
+                        <label><input type="radio" name="p-gender" value="زن"> زن</label>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- دکمه مستقیم ارسال و ثبت فرم همراه با قابلیت عکس‌برداری زنده -->
-        <div class="form-submit-container">
-            <button class="btn-form-direct" id="btn-capture-send">
-                📸 ثبت، عکس‌برداری و ارسال مستقیم به واتساپ
-            </button>
-        </div>
-
-        <!-- منوی تخصصی کل معاینات جهت مشاهده مراجعین -->
-        <h2 class="section-title">📋 لیست عمومی معاینات و آزمایش‌ها:</h2>
-        
-        <!-- کیمیای خون -->
-        <div class="test-category">
-            <span class="cat-title">Blood Chemistry (کیمیای خون)</span>
-            <div class="tests-grid">
-                <span class="test-item">FBS / R.B.S</span>
-                <span class="test-item">Cholesterol</span>
-                <span class="test-item">Triglyceride</span>
-                <span class="test-item">HDL / LDL</span>
-                <span class="test-item">BUN / Urea</span>
-                <span class="test-item">Creatinine</span>
-                
+            <!-- منوی انتخاب معاینات -->
+            <h2 class="section-title">📋 انتخاب معاینات و آزمایش‌ها:</h2>
+            
+            <!-- کیمیای خون -->
+            <div class="test-category">
