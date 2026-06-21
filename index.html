@@ -60,11 +60,29 @@
             font-size: 15px;
             font-weight: bold;
             color: #d9383a;
-            margin: 2px 0 10px 0;
+            margin: 2px 0 8px 0;
             background: #fff0f0;
             display: inline-block;
             padding: 4px 12px;
             border-radius: 8px;
+        }
+
+        .top-phones {
+            margin: 5px 0 12px 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: #0b4f6c;
+        }
+
+        .top-phones a {
+            color: #0b4f6c;
+            text-decoration: none;
+            background: #f0f4f8;
+            padding: 3px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 3px;
+            border: 1px solid #e2e8f0;
         }
 
         .subtitle {
@@ -90,6 +108,63 @@
             border-bottom: 2px solid #e2e8f0;
             padding-bottom: 5px;
             font-weight: bold;
+        }
+
+        /* استایل فرم مشخصات مریض */
+        .patient-form {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 13px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(1, 186, 239, 0.1);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .radio-option input {
+            width: auto;
+            cursor: pointer;
         }
 
         .test-category {
@@ -142,7 +217,6 @@
             font-weight: bold;
         }
 
-        /* دکمه تایید نهایی */
         .submit-container {
             position: sticky;
             bottom: 0;
@@ -171,11 +245,8 @@
             transition: 0.2s;
         }
 
-        .btn-submit:hover {
-            transform: translateY(-2px);
-        }
+        .btn-submit:hover { transform: translateY(-2px); }
 
-        /* بخش اطلاعات تماس زنده */
         .phone-group {
             border: 1px solid #e2e8f0;
             border-radius: 16px;
@@ -228,6 +299,11 @@
             <div class="animated-icon">🔬</div>
             <h1>مایار طبی لابراتوار</h1>
             <div class="doctor-name">تکنالوژیست داکتر عبدالبصیر وردگ مایار</div>
+            
+            <div class="top-phones">
+                📞 <a href="tel:0780873442">۰۷۸۰۸۷۳۴۴۲</a>
+            </div>
+
             <p class="subtitle">Mayar Medical Laboratory</p>
         </header>
 
@@ -237,60 +313,37 @@
             کابل، ناحیه نهم، قریه خواجه رواش، مایار طبی لابراتوار
         </div>
 
+        <!-- فرم مشخصات مریض -->
+        <h2 class="section-title">👤 فرم مشخصات مریض:</h2>
+        <div class="patient-form">
+            <div class="form-group">
+                <label for="p-name">نام و ولد مریض:</label>
+                <input type="text" id="p-name" placeholder="مثلاً: احمد ولد محمد">
+            </div>
+            <div class="form-group">
+                <label for="p-age">سن مریض (سال):</label>
+                <input type="number" id="p-age" placeholder="مثلاً: ۲۵">
+            </div>
+            <div class="form-group">
+                <label for="p-phone">شماره تماس مریض:</label>
+                <input type="text" id="p-phone" placeholder="مثلاً: ۰۷XXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label>جنسیت مریض:</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="p-gender" value="مرد" checked> مرد
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="p-gender" value="زن"> زن
+                    </label>
+                </div>
+            </div>
+        </div>
+
         <!-- منوی تخصصی کل معاینات نسخه برگه -->
         <h2 class="section-title">📋 منوی تخصصی معاینات و آزمایش‌ها:</h2>
         
         <!-- ۱. کیمیای خون -->
         <div class="test-category">
-            <span class="cat-title">Blood Chemistry (کیمیای خون)</span>
-            <div class="tests-grid">
-                <span class="test-item" data-test="FBS / R.B.S">FBS / R.B.S</span>
-                <span class="test-item" data-test="Cholesterol">Cholesterol</span>
-                <span class="test-item" data-test="Triglyceride">Triglyceride</span>
-                <span class="test-item" data-test="HDL / LDL">HDL / LDL</span>
-                <span class="test-item" data-test="BUN / Urea">BUN / Urea</span>
-                <span class="test-item" data-test="Creatinine">Creatinine</span>
-                <span class="test-item" data-test="Bilirubin (T/D)">Bilirubin (T/D)</span>
-                <span class="test-item" data-test="SGPT / SGOT">SGPT / SGOT</span>
-                <span class="test-item" data-test="Alkphos">Alkphos</span>
-                <span class="test-item" data-test="Uric Acid / Calcium">Uric Acid / Calcium</span>
-                <span class="test-item" data-test="Total Protein">Total Protein</span>
-            </div>
-        </div>
-
-        <!-- ۲. خون شناسی -->
-        <div class="test-category">
-            <span class="cat-title">Hematology (خون‌شناسی)</span>
-            <div class="tests-grid">
-                <span class="test-item" data-test="TLC / RBC">TLC / RBC</span>
-                <span class="test-item" data-test="Platelet / HCT">Platelet / HCT</span>
-                <span class="test-item" data-test="HB / ESR">HB / ESR</span>
-                <span class="test-item" data-test="Lymphocytes">Lymphocytes</span>
-                <span class="test-item" data-test="Neutrophils">Neutrophils</span>
-                <span class="test-item" data-test="Monocytes">Monocytes</span>
-                <span class="test-item" data-test="Eosinophil">Eosinophil</span>
-                <span class="test-item" data-test="Basophils">Basophils</span>
-                <span class="test-item" data-test="Reticulocytes">Reticulocytes</span>
-                <span class="test-item" data-test="Malaria (MP)">Malaria (MP)</span>
-                <span class="test-item" data-test="Leishmania">Leishmania</span>
-            </div>
-        </div>
-
-        <!-- ۳. ادرار و مدفوع -->
-        <div class="test-category">
-            <span class="cat-title">Urine & Stool (ادرار و مدفوع)</span>
-            <div class="tests-grid">
-                <span class="test-item" data-test="Urine Chemical">Urine Chemical</span>
-                <span class="test-item" data-test="Urine Microscopic">Urine Microscopic</span>
-                <span class="test-item" data-test="Stool Examination">Stool Examination</span>
-                <span class="test-item" data-test="H. Pylori Test">H. Pylori Test</span>
-                <span class="test-item" data-test="Occult Blood">Occult Blood</span>
-            </div>
-        </div>
-
-        <!-- ۴. بخش اسپرم -->
-        <div class="test-category">
-            <span class="cat-title">Semen Analysis (تجزیه اسپرم)</span>
-            <div class="tests-grid">
-                <span class="test-item" data-test="Volume / PH">Volume / PH</span>
-                
+            
