@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لابراتوار تخصصی طبی مایار</title>
+    <style>
+        /* تعریف متغیرهای رنگی برای استایل مدرن پزشکی */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #eef2f7 0%, #d9e2ec 100%);
+            --card-bg: #ffffff;
+            --primary-color: #0b4f6c;
+            --secondary-color: #01baef;
+            --text-main: #1b2a4a;
+            --text-muted: #627d98;
+            --whatsapp-color: #20ba5a;
+            --shadow-pro: 0 20px 40px rgba(27, 42, 74, 0.07);
+        }
+
+        /* استایل‌های پایه */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            margin: 0;
+            padding: 15px;
+            color: var(--text-main);
+            direction: rtl;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* کانتینر اصلی کارت و وب‌سایت */
+        .main-container {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 450px;
+            border-radius: 24px;
+            padding: 30px 24px;
+            box-shadow: var(--shadow-pro);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        /* هدر سایت */
+        .lab-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .animated-icon {
+            font-size: 50px;
+            margin-bottom: 5px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .lab-header h1 {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin: 5px 0;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(1, 186, 239, 0.1);
+            color: var(--secondary-color);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* بخش ویژگی‌های آزمایشگاه */
+        .features {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .feat-item {
+            background: #f0f4f8;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 8px;
+            border-radius: 10px;
+            flex: 1;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        /* محوطه دکمه‌ها */
+        .action-area h2 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .notice {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* گروه‌بندی شماره‌ها */
+        .phone-group {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: #fafbfc;
+        }
+
+        .phone-group legend {
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--text-muted);
+            padding: 0 10px;
+        }
+
+        /* استایل عمومی دکمه‌ها همراه با انیمیشن */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            margin: 10px 0;
+            text-decoration: none;
+            color: white;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-phone {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #136a8a 100%);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, var(--whatsapp-color) 0%, #1ca34d 100%);
+        }
+
+        .icon {
+            margin-left: 8px;
+            font-size: 16px;
+        }
+
+        /* فوتر وب‌سایت */
+        .lab-footer {
+            text-align: center;
+            margin-top: 25px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .copyright {
+            font-size: 11px;
+            margin-top: 5px;
+            opacity: 0.7;
+        }
+
+        /* انیمیشن تپش آیکون میکروسکوپ */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- بخش هدر و برندینگ -->
+        <header class="lab-header">
+            <div class="animated-icon">🔬</div>
+            <h1>لابراتوار طبی مایار</h1>
+            <p class="subtitle">Mayar Medical Laboratory</p>
+            <div class="badge">پاسخ‌دهی سریع و دقیق</div>
+        </header>
+
+        <!-- بخش ویژگی‌ها -->
+        <section class="features">
+            <div class="feat-item">✔️ جواب‌دهی آنلاین</div>
+            <div class="feat-item">✔️ مجهز به تکنولوژی روز</div>
+            <div class="feat-item">✔️ کادر مجرب</div>
+        </section>
+
+        <!-- دکمه‌های ارتباطی حرفه‌ای -->
+        <main class="action-area">
+            <h2>پذیرش و نوبت‌دهی آنلاین</h2>
+            <p class="notice">جهت هماهنگی، ارسال نسخه یا دریافت جواب آزمایش کلیک کنید:</p>
+
+            <!-- خط اول ارتباطی -->
+            <fieldset class="phone-group">
+                <legend>اپراتور اول (ارتباط مستقیم)</legend>
+                <a href="tel:0780873442" class="btn btn-phone">
+                    <span class="icon">📞</span> تماس تلفنی: ۰۷۸۰۸۷۳۴۴۲
+                </a>
+                <a href="https://wa.me" target="_blank" class="btn btn-whatsapp">
+                    <span class="icon">💬</span> پیام در واتساپ
+                </a>
+            </fieldset>
+
+            <!-- خط دوم ارتباطی -->
+            <fieldset class="phone-group">
+                <legend>اپراتور دوم (پشتیبانی)</legend>
+                <a href="tel:0701145135" class="btn btn-phone">
+                    <span class="icon">📞</span> تماس تلفنی: ۰۷۰۱۱۴۵۱۳۵
+                </a>
+                <a href="https://wa.me" target="_blank" class="btn btn-whatsapp">
+                    <span class="icon">💬</span> پیام در واتساپ
+                </a>
+            </fieldset>
+        </main>
+
+        <!-- فوتر سایت -->
+        <footer class="lab-footer">
+            <p>ساعات کاری: همه روزه از ساعت ۷ صبح الی ۸ شب</p>
+            <p class="copyright">© ۲۰۲۶ لابراتوار مایار. تمامی حقوق محفوظ است.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
