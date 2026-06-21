@@ -39,7 +39,6 @@
             border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
-        /* انتخاب زبان */
         .lang-switcher {
             display: flex;
             justify-content: center;
@@ -153,13 +152,26 @@
             list-style: none;
         }
 
+        /* استایل دکمه‌ای شدن تست‌ها */
         .test-item {
             font-size: 11px;
             color: #334e68;
             background: #ffffff;
-            padding: 6px 8px;
+            padding: 8px;
             border-radius: 6px;
-            border: 1px solid #f0f4f8;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: block;
+            text-decoration: none;
+        }
+
+        .test-item:hover {
+            background: #eef5fa;
+            border-color: var(--secondary-color);
+            transform: scale(1.02);
         }
 
         .phone-group {
@@ -230,79 +242,48 @@
             کابل، ناحیه نهم، قریه خواجه رواش، مایار طبی لابراتوار
         </div>
 
-        <!-- لیست آزمایشات -->
+        <p style="font-size: 11px; color: #d9383a; text-align: center; font-weight: bold; margin-bottom: 10px;" id="txt-hint">👇 برای سفارش یا استعلام هر آزمایش، روی آن کلیک کنید تا مستقیماً در واتساپ ارسال شود.</p>
+
+        <!-- لیست آزمایشات متصل به واتساپ هوشمند -->
         <h2 class="section-title" id="txt-menu-title">📋 منوی تخصصی معاینات و آزمایش‌ها:</h2>
         
         <!-- کیمیای خون -->
         <div class="test-category">
             <span class="cat-title" id="cat-chemistry">Blood Chemistry (کیمیای خون)</span>
-            <ul class="tests-grid">
-                <li class="test-item">FBS / R.B.S</li>
-                <li class="test-item">Cholesterol</li>
-                <li class="test-item">Triglyceride</li>
-                <li class="test-item">HDL / LDL</li>
-                <li class="test-item">BUN / Urea</li>
-                <li class="test-item">Creatinine</li>
-                <li class="test-item">Bilirubin (T/D)</li>
-                <li class="test-item">SGPT / SGOT</li>
-                <li class="test-item">Alkphos</li>
-                <li class="test-item">Uric Acid / Calcium</li>
-            </ul>
+            <div class="tests-grid">
+                <span class="test-item" onclick="sendTest('FBS / R.B.S')">FBS / R.B.S</span>
+                <span class="test-item" onclick="sendTest('Cholesterol')">Cholesterol</span>
+                <span class="test-item" onclick="sendTest('Triglyceride')">Triglyceride</span>
+                <span class="test-item" onclick="sendTest('HDL / LDL')">HDL / LDL</span>
+                <span class="test-item" onclick="sendTest('BUN / Urea')">BUN / Urea</span>
+                <span class="test-item" onclick="sendTest('Creatinine')">Creatinine</span>
+                <span class="test-item" onclick="sendTest('Bilirubin (T/D)')">Bilirubin (T/D)</span>
+                <span class="test-item" onclick="sendTest('SGPT / SGOT')">SGPT / SGOT</span>
+                <span class="test-item" onclick="sendTest('Alkphos')">Alkphos</span>
+                <span class="test-item" onclick="sendTest('Uric Acid / Calcium')">Uric Acid / Calcium</span>
+            </div>
         </div>
 
         <!-- خون شناسی -->
         <div class="test-category">
             <span class="cat-title" id="cat-hematology">Hematology (خون‌شناسی)</span>
-            <ul class="tests-grid">
-                <li class="test-item">TLC / RBC</li>
-                <li class="test-item">Platelet / HCT</li>
-                <li class="test-item">HB / ESR</li>
-                <li class="test-item">Lymphocytes</li>
-                <li class="test-item">Neutrophils</li>
-                <li class="test-item">Monocytes</li>
-                <li class="test-item">Eosinophil</li>
-                <li class="test-item">Basophils</li>
-                <li class="test-item">Malaria (MP)</li>
-                <li class="test-item">Leishmania</li>
-            </ul>
+            <div class="tests-grid">
+                <span class="test-item" onclick="sendTest('TLC / RBC')">TLC / RBC</span>
+                <span class="test-item" onclick="sendTest('Platelet / HCT')">Platelet / HCT</span>
+                <span class="test-item" onclick="sendTest('HB / ESR')">HB / ESR</span>
+                <span class="test-item" onclick="sendTest('Lymphocytes')">Lymphocytes</span>
+                <span class="test-item" onclick="sendTest('Neutrophils')">Neutrophils</span>
+                <span class="test-item" onclick="sendTest('Monocytes')">Monocytes</span>
+                <span class="test-item" onclick="sendTest('Eosinophil')">Eosinophil</span>
+                <span class="test-item" onclick="sendTest('Basophils')">Basophils</span>
+                <span class="test-item" onclick="sendTest('Malaria (MP)')">Malaria (MP)</span>
+                <span class="test-item" onclick="sendTest('Leishmania')">Leishmania</span>
+            </div>
         </div>
 
         <!-- ادرار و مدفوع -->
         <div class="test-category">
             <span class="cat-title" id="cat-urine">Urine & Stool (ادرار و مدفوع)</span>
-            <ul class="tests-grid">
-                <li class="test-item">Urine Chemical</li>
-                <li class="test-item">Urine Microscopic</li>
-                <li class="test-item">Stool Examination</li>
-                <li class="test-item">H. Pylori Test</li>
-                <li class="test-item">Occult Blood</li>
-            </ul>
-        </div>
-
-        <!-- بخش اسپرم -->
-        <div class="test-category">
-            <span class="cat-title" id="cat-semen">Semen Analysis (تجزیه اسپرم)</span>
-            <ul class="tests-grid">
-                <li class="test-item">Volume / PH</li>
-                <li class="test-item">Sperm Count</li>
-                <li class="test-item">Motility Form</li>
-                <li class="test-item">Morphology</li>
-                <li class="test-item">Pus Cells</li>
-            </ul>
-        </div>
-
-        <!-- سیرولوژی -->
-        <div class="test-category">
-            <span class="cat-title" id="cat-serology">Serology (سیرولوژی)</span>
-            <ul class="tests-grid">
-                <li class="test-item">Widal Test / TyphoidDot</li>
-                <li class="test-item">Brucellosis (Abortus/Melitensis)</li>
-                <li class="test-item">Toxoplasmosis (IgG/IgM)</li>
-                <li class="test-item">Rheumatoid Factor / C.R.P</li>
-                <li class="test-item">ASO Titer / Blood Group</li>
-                <li class="test-item">HBs Ag / HCV Ab / HIV</li>
-                <li class="test-item">TORCH (Toxo, Rubella, CMV)</li>
-            </ul>
-        </div>
-
-        
+            <div class="tests-grid">
+                <span class="test-item" onclick="sendTest('Urine Chemical')">Urine Chemical</span>
+                
