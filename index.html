@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مایار طبی لابراتوار | Mayar Medical Laboratory</title>
+    <!-- لود کردن کتابخانه رسمی ساخت عکس از صفحه -->
+    <script src="https://cloudflare.com"></script>
     <style>
         :root {
             --bg-gradient: linear-gradient(135deg, #eef2f7 0%, #d9e2ec 100%);
@@ -41,7 +43,7 @@
 
         .lab-header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .animated-icon {
@@ -81,14 +83,6 @@
             padding: 3px 10px;
             border-radius: 6px;
             display: inline-block;
-            margin: 3px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .subtitle {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin: 0 0 15px 0;
         }
 
         .address-box {
@@ -101,38 +95,36 @@
             line-height: 1.6;
         }
 
-        .section-title {
-            font-size: 16px;
-            color: var(--primary-color);
-            margin: 25px 0 12px 0;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 5px;
-            font-weight: bold;
-        }
-
-        /* استایل فرم مشخصات مریض */
+        /* کادر فرم مشخصات مریض که تبدیل به عکس می‌شود */
         .patient-form {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 16px;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .form-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            display: block;
         }
 
         .form-group {
             margin-bottom: 12px;
-            text-align: right;
         }
 
         .form-group label {
             display: block;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
-            margin-bottom: 5px;
-            color: var(--primary-color);
+            margin-bottom: 4px;
+            color: #4a5568;
         }
 
-        .form-group input, .form-group select {
+        .form-control {
             width: 100%;
             padding: 10px;
             border: 1px solid #cbd5e1;
@@ -142,29 +134,54 @@
             font-family: inherit;
         }
 
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(1, 186, 239, 0.1);
-        }
-
         .radio-group {
             display: flex;
-            gap: 20px;
-            margin-top: 5px;
+            gap: 15px;
+            padding-top: 5px;
         }
 
-        .radio-option {
+        .radio-group label {
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 5px;
-            font-size: 13px;
-            cursor: pointer;
+            gap: 4px;
         }
 
-        .radio-option input {
-            width: auto;
+        /* دکمه ارسال اختصاصی زیر فرم مراجع */
+        .form-submit-container {
+            margin-bottom: 25px;
+        }
+
+        .btn-form-direct {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #20ba5a 0%, #1ca34d 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 14px;
             cursor: pointer;
+            box-shadow: 0 4px 12px rgba(32, 186, 90, 0.3);
+            transition: 0.2s;
+        }
+
+        .btn-form-direct:hover {
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            font-size: 16px;
+            color: var(--primary-color);
+            margin: 25px 0 12px 0;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 5px;
+            font-weight: bold;
         }
 
         .test-category {
@@ -202,50 +219,10 @@
             padding: 8px;
             border-radius: 6px;
             border: 1px solid #e2e8f0;
-            cursor: pointer;
             text-align: center;
             font-weight: 500;
-            transition: all 0.2s;
             display: block;
-            user-select: none;
         }
-
-        .test-item.selected {
-            background: #eef5fa;
-            border: 2px solid var(--secondary-color);
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-
-        .submit-container {
-            position: sticky;
-            bottom: 0;
-            background: white;
-            padding: 10px 0;
-            border-top: 1px solid #e2e8f0;
-            margin: 20px 0;
-            text-align: center;
-            z-index: 10;
-        }
-
-        .btn-submit {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, var(--whatsapp-color) 0%, #1ca34d 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 14px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(32, 186, 90, 0.3);
-            transition: 0.2s;
-        }
-
-        .btn-submit:hover { transform: translateY(-2px); }
 
         .phone-group {
             border: 1px solid #e2e8f0;
@@ -273,11 +250,9 @@
             border-radius: 10px;
             font-weight: bold;
             font-size: 13px;
-            transition: all 0.2s;
         }
 
         .btn-phone { background: linear-gradient(135deg, var(--primary-color) 0%, #136a8a 100%); }
-        .btn-whatsapp { background: linear-gradient(135deg, var(--whatsapp-color) 0%, #1ca34d 100%); }
         .btn-email { background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); }
 
         .lab-footer {
@@ -303,7 +278,6 @@
             <div class="top-phones">
                 📞 <a href="tel:0780873442">۰۷۸۰۸۷۳۴۴۲</a>
             </div>
-
             <p class="subtitle">Mayar Medical Laboratory</p>
         </header>
 
@@ -313,37 +287,52 @@
             کابل، ناحیه نهم، قریه خواجه رواش، مایار طبی لابراتوار
         </div>
 
-        <!-- فرم مشخصات مریض -->
-        <h2 class="section-title">👤 فرم مشخصات مریض:</h2>
-        <div class="patient-form">
+        <!-- بخش فرم مشخصات مریض (آی‌دی اختصاصی برای عکس‌برداری دارد) -->
+        <div class="patient-form" id="capture-area">
+            <span class="form-title">📝 فرم مشخصات مریض:</span>
+            
             <div class="form-group">
-                <label for="p-name">نام و ولد مریض:</label>
-                <input type="text" id="p-name" placeholder="مثلاً: احمد ولد محمد">
+                <label>نام و ولد مریض:</label>
+                <input type="text" id="p-name" class="form-control" placeholder="مثال: احمد ولد محمد">
             </div>
+
             <div class="form-group">
-                <label for="p-age">سن مریض (سال):</label>
-                <input type="number" id="p-age" placeholder="مثلاً: ۲۵">
+                <label>سن مریض:</label>
+                <input type="number" id="p-age" class="form-control" placeholder="مثال: ۱۹">
             </div>
+
             <div class="form-group">
-                <label for="p-phone">شماره تماس مریض:</label>
-                <input type="text" id="p-phone" placeholder="مثلاً: ۰۷XXXXXXXX">
+                <label>شماره تماس مریض:</label>
+                <input type="tel" id="p-phone" class="form-control" placeholder="مثال: 0785468796">
             </div>
+
             <div class="form-group">
-                <label>جنسیت مریض:</label>
+                <label>جنسیت:</label>
                 <div class="radio-group">
-                    <label class="radio-option">
-                        <input type="radio" name="p-gender" value="مرد" checked> مرد
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="p-gender" value="زن"> زن
-                    </label>
+                    <label><input type="radio" name="p-gender" value="مرد" checked> مرد</label>
+                    <label><input type="radio" name="p-gender" value="زن"> زن</label>
                 </div>
             </div>
         </div>
 
-        <!-- منوی تخصصی کل معاینات نسخه برگه -->
-        <h2 class="section-title">📋 منوی تخصصی معاینات و آزمایش‌ها:</h2>
+        <!-- دکمه مستقیم ارسال و ثبت فرم همراه با قابلیت عکس‌برداری زنده -->
+        <div class="form-submit-container">
+            <button class="btn-form-direct" id="btn-capture-send">
+                📸 ثبت، عکس‌برداری و ارسال مستقیم به واتساپ
+            </button>
+        </div>
+
+        <!-- منوی تخصصی کل معاینات جهت مشاهده مراجعین -->
+        <h2 class="section-title">📋 لیست عمومی معاینات و آزمایش‌ها:</h2>
         
-        <!-- ۱. کیمیای خون -->
+        <!-- کیمیای خون -->
         <div class="test-category">
-            
+            <span class="cat-title">Blood Chemistry (کیمیای خون)</span>
+            <div class="tests-grid">
+                <span class="test-item">FBS / R.B.S</span>
+                <span class="test-item">Cholesterol</span>
+                <span class="test-item">Triglyceride</span>
+                <span class="test-item">HDL / LDL</span>
+                <span class="test-item">BUN / Urea</span>
+                <span class="test-item">Creatinine</span>
+                
