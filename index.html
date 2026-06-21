@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl" id="html-root">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,33 +37,6 @@
             padding: 25px 20px;
             box-shadow: var(--shadow-pro);
             border: 1px solid rgba(255, 255, 255, 0.8);
-        }
-
-        .lang-switcher {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            background: #f0f4f8;
-            padding: 6px;
-            border-radius: 30px;
-        }
-
-        .lang-btn {
-            background: none;
-            border: none;
-            padding: 8px 16px;
-            font-size: 13px;
-            font-weight: bold;
-            color: var(--primary-color);
-            cursor: pointer;
-            border-radius: 20px;
-            transition: 0.2s;
-        }
-
-        .lang-btn.active {
-            background: var(--primary-color);
-            color: white;
         }
 
         .lab-header {
@@ -108,11 +81,6 @@
             margin-bottom: 20px;
             font-size: 13px;
             line-height: 1.6;
-        }
-
-        .ltr-dir {
-            direction: ltr !important;
-            text-align: left !important;
         }
 
         .section-title {
@@ -174,14 +142,16 @@
             font-weight: bold;
         }
 
+        /* دکمه تایید نهایی */
         .submit-container {
             position: sticky;
             bottom: 0;
             background: white;
             padding: 10px 0;
             border-top: 1px solid #e2e8f0;
-            margin-top: 20px;
+            margin: 20px 0;
             text-align: center;
+            z-index: 10;
         }
 
         .btn-submit {
@@ -205,6 +175,40 @@
             transform: translateY(-2px);
         }
 
+        /* بخش اطلاعات تماس زنده */
+        .phone-group {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: #fafbfc;
+        }
+
+        .phone-group legend {
+            font-size: 11px;
+            font-weight: bold;
+            color: var(--text-muted);
+            padding: 0 8px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            margin: 8px 0;
+            text-decoration: none;
+            color: white;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .btn-phone { background: linear-gradient(135deg, var(--primary-color) 0%, #136a8a 100%); }
+        .btn-whatsapp { background: linear-gradient(135deg, var(--whatsapp-color) 0%, #1ca34d 100%); }
+        .btn-email { background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); }
+
         .lab-footer {
             text-align: center;
             margin-top: 25px;
@@ -219,34 +223,26 @@
 
     <div class="main-container">
         
-        <!-- سوئیچر زبان -->
-        <div class="lang-switcher">
-            <button id="btn-dari" class="lang-btn active">دری</button>
-            <button id="btn-pashto" class="lang-btn">پښتو</button>
-            <button id="btn-english" class="lang-btn">English</button>
-        </div>
-
-        <!-- هدر -->
+        <!-- هدر وب‌سایت -->
         <header class="lab-header">
             <div class="animated-icon">🔬</div>
-            <h1 id="txt-title">مایار طبی لابرآتوار</h1>
-            <div class="doctor-name" id="txt-doctor">تکنالوژیست داکتر عبدالبصیر وردگ مایار</div>
+            <h1>مایار طبی لابراتوار</h1>
+            <div class="doctor-name">تکنالوژیست داکتر عبدالبصیر وردگ مایار</div>
             <p class="subtitle">Mayar Medical Laboratory</p>
         </header>
 
-        <!-- بخش اطلاعات مکان -->
-        <div class="address-box" id="txt-address-box">
+        <!-- اطلاعات مکان فیزیکی -->
+        <div class="address-box">
             <strong>📍 آدرس:</strong>
             کابل، ناحیه نهم، قریه خواجه رواش، مایار طبی لابراتوار
         </div>
 
-        <p style="font-size: 11px; color: #0b4f6c; text-align: center; font-weight: bold; margin-bottom: 15px;" id="txt-hint">👇 معاینات مورد نظر خود را انتخاب کنید (روی آن‌ها کلیک کنید)، سپس دکمه سبز رنگ پایین را جهت تأیید و ارسال فشار دهید.</p>
-
-        <h2 class="section-title" id="txt-menu-title">📋 منوی تخصصی معاینات و آزمایش‌ها:</h2>
+        <!-- منوی تخصصی کل معاینات نسخه برگه -->
+        <h2 class="section-title">📋 منوی تخصصی معاینات و آزمایش‌ها:</h2>
         
-        <!-- کیمیای خون -->
+        <!-- ۱. کیمیای خون -->
         <div class="test-category">
-            <span class="cat-title" id="cat-chemistry">Blood Chemistry (کیمیای خون)</span>
+            <span class="cat-title">Blood Chemistry (کیمیای خون)</span>
             <div class="tests-grid">
                 <span class="test-item" data-test="FBS / R.B.S">FBS / R.B.S</span>
                 <span class="test-item" data-test="Cholesterol">Cholesterol</span>
@@ -258,12 +254,13 @@
                 <span class="test-item" data-test="SGPT / SGOT">SGPT / SGOT</span>
                 <span class="test-item" data-test="Alkphos">Alkphos</span>
                 <span class="test-item" data-test="Uric Acid / Calcium">Uric Acid / Calcium</span>
+                <span class="test-item" data-test="Total Protein">Total Protein</span>
             </div>
         </div>
 
-        <!-- خون شناسی -->
+        <!-- ۲. خون شناسی -->
         <div class="test-category">
-            <span class="cat-title" id="cat-hematology">Hematology (خون‌شناسی)</span>
+            <span class="cat-title">Hematology (خون‌شناسی)</span>
             <div class="tests-grid">
                 <span class="test-item" data-test="TLC / RBC">TLC / RBC</span>
                 <span class="test-item" data-test="Platelet / HCT">Platelet / HCT</span>
@@ -273,14 +270,15 @@
                 <span class="test-item" data-test="Monocytes">Monocytes</span>
                 <span class="test-item" data-test="Eosinophil">Eosinophil</span>
                 <span class="test-item" data-test="Basophils">Basophils</span>
+                <span class="test-item" data-test="Reticulocytes">Reticulocytes</span>
                 <span class="test-item" data-test="Malaria (MP)">Malaria (MP)</span>
                 <span class="test-item" data-test="Leishmania">Leishmania</span>
             </div>
         </div>
 
-        <!-- ادرار و مدفوع -->
+        <!-- ۳. ادرار و مدفوع -->
         <div class="test-category">
-            <span class="cat-title" id="cat-urine">Urine & Stool (ادرار و مدفوع)</span>
+            <span class="cat-title">Urine & Stool (ادرار و مدفوع)</span>
             <div class="tests-grid">
                 <span class="test-item" data-test="Urine Chemical">Urine Chemical</span>
                 <span class="test-item" data-test="Urine Microscopic">Urine Microscopic</span>
@@ -290,7 +288,9 @@
             </div>
         </div>
 
-        <!-- بخش اسپرم -->
+        <!-- ۴. بخش اسپرم -->
         <div class="test-category">
-            <span class="cat-title" id="cat-semen">Semen Analysis (تجزیه اسپرم)</span>
-            
+            <span class="cat-title">Semen Analysis (تجزیه اسپرم)</span>
+            <div class="tests-grid">
+                <span class="test-item" data-test="Volume / PH">Volume / PH</span>
+                
